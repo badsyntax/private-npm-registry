@@ -1,14 +1,18 @@
 ## Overview 
 
-This project demonstrates how to create a private NPM registry within 
-a Virtual Machine, and how to use that private registry with the NPM client.
+This project demonstrates how to create a private npm registry within 
+a Virtual Machine, and how to use that private registry with the npm client.
+
+The private registry will replicate the public registry. You can pubish
+and install private modules, and install public modules, but you cannot
+publish public modules. 
 
 You'll need Vagrant and VirtualBox.
 
 ## Getting started
 
-###
-
+```
+git clone https://github.com/badsyntax/private-npm-registry private-npm-registry && cd $_
 ```
 vagrant up
 
@@ -16,10 +20,16 @@ vagrant up
 vagrant ssh
 ```
 
+Edit your hosts file (`/etc/hosts`) and add:
+
+```
+192.168.50.4 registry.mydomain.com
+```
+
 ## Using CouchDB
 
-* View http://192.168.50.4:5984/.
-* View http://192.168.50.4:5984/_utils/ for admin interface.
+* View https://registry.mydomain.com/.
+* View https://registry.mydomain.com/_utils/ for admin interface.
 
 ### Admin credentials
 
@@ -28,26 +38,12 @@ vagrant ssh
 
 ## Using the registry
 
-Set the registry so the npm client will use the local registry:
+Set the registry, let npm accept self-signed certs, and login:
 
 ```
 npm config set always-auth true
-
-npm config set \
-  registry=http://admin:password@192.168.50.4:5984/registry/_design/app/_rewrite
-
-```
-
-So now your ~/.npmrc should look like:
-
-```
-always-auth=true
-registry=http://admin:password@192.168.50.4:5984/registry/_design/app/_rewrite
-```
-
-You then need to login:
-
-```
+npm config set registry https://admin:password@registry.mydomain.com/
+npm config set strict-ssl 0
 npm login
 ```
 
@@ -55,6 +51,7 @@ npm login
 
 ```
 npm config set registry https://registry.npmjs.org/
+npm config set strict-ssl 1
 npm login
 ```
 
@@ -68,4 +65,6 @@ from being created and then manually create users on the registry server to allo
 
 ### TODO
 
-Couchdb SSL
+* Couchdb SSL
+* Proxy public repos to the public registry instead of replication
+
