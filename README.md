@@ -1,15 +1,17 @@
 ## Overview 
 
-This project demonstrates how to create a private npm registry within 
+This is an WIP project that demonstrates how to create a private npm registry within 
 a Virtual Machine, and how to use that private registry with the npm client.
 
 The private registry will replicate the public registry. You can pubish
 and install private modules, and install public modules, but you cannot
 publish public modules. 
 
-You'll need Vagrant and VirtualBox.
+It uses https://github.com/npm/npm-registry-couchapp for the couchdb registry.
 
 ## Getting started
+
+You'll need the latest versions of Vagrant and VirtualBox installed.
 
 ```
 git clone https://github.com/badsyntax/private-npm-registry private-npm-registry && cd $_
