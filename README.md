@@ -55,11 +55,11 @@ npm login
 
 ## Authentication
 
-The current strategy is to provide the auth credentials as part of the registry URL
-and let couchdb handle the auth. Couchdb user credentials are sent in plaint text which is not ideal! 
+The current strategy is to provide the admin auth credentials as part of the registry URL
+and let couchdb handle the auth. Couchdb admin credentials are stored in plaint text which is not ideal! 
 
 It would perhaps be better to lock down the `npm login` operation to prevent new users 
-from being created and then manually create users on the registry server to allow read/write.
+from being created, and then manually create users on the registry server to allow read/write.
 
 ### TODO
 
