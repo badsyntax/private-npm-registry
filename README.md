@@ -14,8 +14,6 @@ You'll need Vagrant and VirtualBox.
 ```
 git clone https://github.com/badsyntax/private-npm-registry private-npm-registry && cd $_
 vagrant up
-# To enter the VM via SSH
-vagrant ssh
 ```
 
 Edit your hosts file (`/etc/hosts`) and add:
