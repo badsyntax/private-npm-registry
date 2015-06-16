@@ -27,7 +27,7 @@ Edit your hosts file (`/etc/hosts`) and add:
 ## Using CouchDB
 
 * View https://registry.mydomain.com/.
-* View https://registry.mydomain.com/_utils/ for admin interface.
+* View http://192.168.50.4/_utils/ for admin interface.
 
 ### Admin credentials
 
