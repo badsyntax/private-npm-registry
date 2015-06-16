@@ -5,7 +5,7 @@ a Virtual Machine, and how to use that private registry with the npm client.
 
 The private registry will replicate the public registry. You can pubish
 and install private modules, and install public modules, but you cannot
-publish public modules. 
+publish any modules to the public registry.
 
 It uses https://github.com/npm/npm-registry-couchapp for the couchdb registry.
 
