@@ -1,6 +1,6 @@
 ## Overview 
 
-This is an WIP project that demonstrates how to create a private npm registry within 
+This is a WIP project that demonstrates how to create a private npm registry within 
 a Virtual Machine, and how to use that private registry with the npm client.
 
 The private registry will replicate the public registry. You can pubish
