@@ -61,6 +61,8 @@ and let couchdb handle the auth. Couchdb admin credentials are stored in plaint 
 It would perhaps be better to lock down the `npm login` operation to prevent new users 
 from being created, and then manually create users on the registry server to allow read/write.
 
+Even better, provide a custom authenticator for `npm login` to use 3rd party auth services.
+
 ### TODO
 
 * Couchdb SSL
