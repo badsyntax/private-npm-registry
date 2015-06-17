@@ -1,0 +1,20 @@
+{
+  "name": "private-npm-registry",
+  "version": "1.0.0",
+  "description": "This is a WIP project that demonstrates how to create a private npm registry within  a Virtual Machine, and how to use that private registry with the npm client.",
+  "main": "index.js",
+  "scripts": {
+    "heredoc": "./heredoc.sh",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/badsyntax/private-npm-registry.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/badsyntax/private-npm-registry/issues"
+  },
+  "homepage": "https://github.com/badsyntax/private-npm-registry#readme"
+}

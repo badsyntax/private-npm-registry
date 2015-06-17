@@ -72,7 +72,15 @@ Even better, provide a custom authenticator for `npm login` to use 3rd party aut
 * Couchdb SSL
 * Proxy public repos to the public registry instead of replication
 
-### General notes
+### Errors
+
+If you get the following error: `Error: fetch failed with status code 401` then remove the 
+`node_modules` folder and try `npm install` again.
+
+
+### Notes
+
+Edit the couchdb config at `/etc/couchdb/local.ini`
 
 Replicating the public registry:
 

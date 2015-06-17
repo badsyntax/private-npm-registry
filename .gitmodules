@@ -1,0 +1,3 @@
+[submodule "npm-registry-couchapp"]
+	path = npm-registry-couchapp
+	url = git://github.com/npm/npm-registry-couchapp
