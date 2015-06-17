@@ -1,11 +1,17 @@
 #!/usr/bin/env bash
 # ubuntu/trusty64
 
+echo "Adding software repos..."
+add-apt-repository -y ppa:nginx/stable
 curl -sL https://deb.nodesource.com/setup_0.12 | bash -
-apt-get install -y git build-essential
-apt-get install -y couchdb
-apt-get install -y nodejs
-apt-get install -y nginx
+
+echo "Installing software..."
+apt-get install -y \
+  git \
+  build-essential \
+  couchdb \
+  nodejs \
+  nginx
 
 echo "Setting up couchdb..."
 
@@ -45,11 +51,8 @@ npm run load \
 NO_PROMPT=true npm run copy \
   --npm-registry-couchapp:couch=http://admin:password@127.0.0.1:5984/registry
 
-# echo "Replicating the npm public registry in the background..."
-# curl -X POST \
-#   http://admin:password@127.0.0.1:5984/_replicate \
-#   -d '{"source":"https://skimdb.npmjs.com/registry/", "target":"registry", "continuous":true, "create_target":true}' \
-#   -H "Content-Type: application/json"
+echo "Starting registry proxy.."
+cd /vagrant/registry-proxy && npm start
 
 echo "Setting up nginx..."
 ln -s /vagrant/nginx/registry.mydomain.com.conf /etc/nginx/sites-enabled/registry.mydomain.com.conf

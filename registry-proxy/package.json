@@ -1,18 +1,20 @@
 {
   "name": "registry-proxy",
+  "description": "The registry proxy",
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "kappa -c config.json"
+    "prestart": "npm install",
+    "start": "pm2 start ./node_modules/.bin/kappa -- -c config.json",
+    "stop": "pm2 stop kappa"
   },
-  "author": "",
+  "author": "Richard Willis <willis.rh@gmail.com>",
   "license": "ISC",
   "dependencies": {
-    "good": "^6.1.4",
-    "good-console": "^5.0.2",
     "hapi": "^8.6.1",
-    "kappa": "^1.0.0-rc.11"
+    "kappa": "^1.0.0-rc.11",
+    "pm2": "^0.14.0"
   }
 }

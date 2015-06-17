@@ -3,11 +3,15 @@
 This is a WIP project that demonstrates how to create a private npm registry within 
 a Virtual Machine, and how to use that private registry with the npm client.
 
-The private registry will replicate the public registry. You can pubish
-and install private modules, and install public modules, but you cannot
+The private registry will proxy requests to the public registry if a package cannot 
+be found in the local registry. All public modules are avaiable without replication.
+
+You can pubish and install private modules, install public modules, but you cannot
 publish any modules to the public registry.
 
-It uses https://github.com/npm/npm-registry-couchapp for the couchdb registry.
+## Libraries used:
+
+* https://github.com/npm/npm-registry-couchapp for the couchdb registry.
 
 ## Getting started
 
@@ -40,7 +44,7 @@ Set the registry, let npm accept self-signed certs, and login:
 
 ```
 npm config set always-auth true
-npm config set registry https://admin:password@registry.mydomain.com/
+npm config set registry https://registry.mydomain.com/
 npm config set strict-ssl 0
 npm login
 ```
@@ -68,3 +72,14 @@ Even better, provide a custom authenticator for `npm login` to use 3rd party aut
 * Couchdb SSL
 * Proxy public repos to the public registry instead of replication
 
+### General notes
+
+Replicating the public registry:
+
+```
+echo "Replicating the npm public registry in the background..."
+curl -X POST \
+  http://admin:password@127.0.0.1:5984/_replicate \
+  -d '{"source":"https://skimdb.npmjs.com/registry/", "target":"registry", "continuous":true, "create_target":true}' \
+  -H "Content-Type: application/json"
+  ```
