@@ -1,0 +1,17 @@
+{
+    "servers": [
+        {
+            "host": "0.0.0.0",
+            "port": 8000
+        }
+    ],
+    "plugins": {
+        "kappa": {
+            "vhost": "registry.mydomain.com",
+            "paths": [
+                "http://admin:password@127.0.0.1:5984/registry/_design/app/_rewrite/",
+                "https://registry.npmjs.org/"
+            ]
+        }
+    }
+}

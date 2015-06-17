@@ -45,11 +45,11 @@ npm run load \
 NO_PROMPT=true npm run copy \
   --npm-registry-couchapp:couch=http://admin:password@127.0.0.1:5984/registry
 
-echo "Replicating the npm public registry in the background..."
-curl -X POST \
-  http://admin:password@127.0.0.1:5984/_replicate \
-  -d '{"source":"https://skimdb.npmjs.com/registry/", "target":"registry", "continuous":true, "create_target":true}' \
-  -H "Content-Type: application/json"
+# echo "Replicating the npm public registry in the background..."
+# curl -X POST \
+#   http://admin:password@127.0.0.1:5984/_replicate \
+#   -d '{"source":"https://skimdb.npmjs.com/registry/", "target":"registry", "continuous":true, "create_target":true}' \
+#   -H "Content-Type: application/json"
 
 echo "Setting up nginx..."
 ln -s /vagrant/nginx/registry.mydomain.com.conf /etc/nginx/sites-enabled/registry.mydomain.com.conf
